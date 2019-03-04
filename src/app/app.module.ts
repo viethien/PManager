@@ -14,6 +14,7 @@ import { IonicStorageModule } from '@ionic/storage'
 import { AutenticacaoService } from './services/autenticacao.service'
 import { GuardaautenticacaoService } from './services/guardaautenticacao.service'
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

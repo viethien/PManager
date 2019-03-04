@@ -1,13 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="logout()"  text-right>
-        <ion-icon slot="icon-only" name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+<app-header></app-header>
+<ion-content>
+<ion-toolbar>
+    <ion-segment>
+      <ion-segment-button value="internas" checked>
+        Tarefas Internas
+      </ion-segment-button>
+      <ion-segment-button value="externas">
+        Tarefas Externas
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-
 </ion-content>
