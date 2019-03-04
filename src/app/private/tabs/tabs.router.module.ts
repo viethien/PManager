@@ -2,48 +2,54 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
+
 const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'home',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../home/home.module#HomePageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'tarefas',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../tarefas/tarefas.module#TarefasPageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'cadastros',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../cadastros/cadastros.module#CadastrosPageModule'
           }
         ]
       },
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
+        path: 'relatorios',
+        children: [
+          {
+            path: '',
+            loadChildren: '../relatorios/relatorios.module#RelatoriosPageModule'
+          }
+        ]
+      },
+
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: './private/tabs/home',
     pathMatch: 'full'
   }
 ];
