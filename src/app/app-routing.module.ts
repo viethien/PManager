@@ -11,6 +11,7 @@ const routes: Routes = [
     canActivate:[GuardaautenticacaoService],
     loadChildren: './private/private-routing.module#PrivateRoutingModule'
   }
+  
 ];
 @NgModule({
   imports: [

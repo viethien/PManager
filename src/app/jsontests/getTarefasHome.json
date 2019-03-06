@@ -1,0 +1,31 @@
+{
+    "getTarefasHome": [
+      {
+        "numero": 12345,
+        "id": "123e4567-e89b-12d3-a456-426655440000",
+        "descricao": "Confecção de Relatórios",
+        "inicio": "14:00",
+        "fim": "15:00",
+        "comentarios": "Relatório de Faturamento",
+        "interna": true
+      },
+      {
+        "numero": 54321,
+        "id": "123e4567-e89b-12d3-a456-426655440001",
+        "descricao": "Confecção de Relatórios",
+        "inicio": "14:00",
+        "fim": "15:00",
+        "comentarios": "Relatório de Faturamento",
+        "interna": true
+      },
+      { 
+        "numero": 67891,
+        "id": "123e4567-e89b-12d3-a456-426655440002",
+        "descricao": "Visita ao Cliente João",
+        "inicio": "14:00",
+        "fim": "15:00",
+        "comentarios": "Relatório de Faturamento",
+        "interna": false
+      }
+    ]
+  }

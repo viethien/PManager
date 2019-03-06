@@ -34,7 +34,7 @@ const routes: Routes = [
             loadChildren: '../tarefas/tarefas.module#TarefasPageModule'
           }
         ]
-      },
+      },      
       {
         path: 'cadastros',
         children: [

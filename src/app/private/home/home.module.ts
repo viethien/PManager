@@ -6,7 +6,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
-import { HeaderComponent } from '../header/header.component';
+
+import { SharedModule } from '../../sharedmodule/sharedmodule.module';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -19,9 +23,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),  
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [HomePage,
-    HeaderComponent ]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

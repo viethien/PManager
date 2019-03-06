@@ -2,12 +2,31 @@
 <ion-content>
 <ion-toolbar>
     <ion-segment>
-      <ion-segment-button value="internas" checked>
+      <ion-segment-button value="internas" checked (click)="showInternas()">
         Tarefas Internas
       </ion-segment-button>
-      <ion-segment-button value="externas">
+      <ion-segment-button value="externas" (click)="showExternas()">
         Tarefas Externas
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+
+ <ion-list *ngIf="interna === true" >
+    <ion-item (click)="showModal(tarefa.id)" detail *ngFor="let tarefa of tarefasInternas" class="in-list item ion-focusable item-label hydrated">
+      <ion-label  routerDirection="forward">
+        <h2>#{{tarefa.numero}} - {{tarefa.descricao}}</h2>
+        <h3>{{tarefa.inicio}} - {{tarefa.fim}}</h3>
+        <p>{{tarefa.comentarios}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list  *ngIf="interna === false" >
+    <ion-item routerDirection="forward" *ngFor="let tarefa of tarefasExternas" (click)="showModal(tarefa.id)">
+      <ion-label>
+        <h2>#{{tarefa.numero}} - {{tarefa.descricao}}</h2>
+        <h3>{{tarefa.inicio}} - {{tarefa.fim}}</h3>
+        <p>{{tarefa.comentarios}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
