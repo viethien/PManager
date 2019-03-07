@@ -1,0 +1,42 @@
+{
+    "tarefadetalhe": 
+      {
+        "tarefa": "000000",
+        "numero": 12345,
+        "comentarios": "Um Comentario",
+        "descricao": "Uma Descricao",
+        "id_cliente": "asdasd",
+        "nome_cliente": "José das couves",
+        "id_tipotarefa": "asdasd",
+        "desc_tipotarefa": "Visita",
+        "data_tarefa": "02/06/2019",
+        "status_tarefa": 1,
+        "id_solicitante": "qwasdfasd",
+        "nome_solicitante": "Tiago",
+        "id_aprovador":"123123",
+        "nome_aprovador":"Bruna",
+        "id_criador": "123124q",
+        "nome_criador": "Julia",
+        "id_sistema": "1231245",
+        "nome_sistema": "SQL SERVER",
+        "inicio": "08:00",
+        "fim": "09:00",
+        "id_sala": "65464646",
+        "nome_sala": "Sala 209",
+        "convidados": [{
+          "id_participante": "123123",
+          "url_avatar": "",
+          "nome_participante": "Augusto",
+          "statusconfirmacao": 1,
+          "justificativa":"Não rola"
+
+        },{
+          "id_participante": "1231235",
+          "url_avatar": "",
+          "nome_participante": "Paulo",
+          "statusconfirmacao": 0,
+          "justificativa":"Vai Rolar"
+        }
+      ]
+    }
+  }

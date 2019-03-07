@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoadHomeService } from './load-home.service';
 
 import { ModalController } from '@ionic/angular';
-import { TarefasDetalhePage } from '../tarefas/tarefas-detalhe/tarefas-detalhe.page';
+import { TarefasDetalhePage } from '../sharedmodule/tarefas-detalhe/tarefas-detalhe.page';
 
 @Component({
   selector: 'app-home',
@@ -41,9 +41,10 @@ export class HomePage  {
     const modal = await this.modalController.create({
      component: TarefasDetalhePage,
      componentProps:{
-       custom_id: id
+     id_tarefa: id
      }
     });
     modal.present();
   }
+
 }

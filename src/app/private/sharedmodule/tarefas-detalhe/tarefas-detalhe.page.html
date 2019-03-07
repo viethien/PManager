@@ -1,0 +1,12 @@
+<ion-header>
+  
+<ion-toolbar>
+  <ion-buttons slot="start" (click)="closeModal()"> 
+    <ion-icon name="close"></ion-icon>
+  </ion-buttons>
+  <ion-title *ngIf="tarefa != null">Tarefa: {{tarefa.numero}}</ion-title>
+</ion-toolbar>
+<ion-content padding  *ngIf="tarefa != null">
+{{tarefa.descricao}}
+
+</ion-content>

@@ -12,8 +12,8 @@
   </ion-toolbar>
 
  <ion-list *ngIf="interna === true" >
-    <ion-item (click)="showModal(tarefa.id)" detail *ngFor="let tarefa of tarefasInternas" class="in-list item ion-focusable item-label hydrated">
-      <ion-label  routerDirection="forward">
+    <ion-item (click)="showModal(tarefa.id)"   routerDirection="forward" detail *ngFor="let tarefa of tarefasInternas" class="in-list item ion-focusable item-label hydrated">
+      <ion-label>
         <h2>#{{tarefa.numero}} - {{tarefa.descricao}}</h2>
         <h3>{{tarefa.inicio}} - {{tarefa.fim}}</h3>
         <p>{{tarefa.comentarios}}</p>

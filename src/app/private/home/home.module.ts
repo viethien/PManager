@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
 
-import { SharedModule } from '../../sharedmodule/sharedmodule.module';
+import { SharedModule } from '../sharedmodule/sharedmodule.module';
 
 
 

@@ -16,12 +16,14 @@ import { GuardaautenticacaoService } from './services/guardaautenticacao.service
 import { LoadHomeService } from './private/home/load-home.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe/tarefas-detalhe.module'
+import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-     IonicStorageModule.forRoot(),HttpClientModule],
+     IonicStorageModule.forRoot(),HttpClientModule,  TarefasDetalhePageModule   ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -29,8 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AutenticacaoService,
     GuardaautenticacaoService,
     LoadHomeService,
-    ModalController   
-
+    ModalController,
+    TarefadetalheService
   ],
   bootstrap: [AppComponent]
 })
