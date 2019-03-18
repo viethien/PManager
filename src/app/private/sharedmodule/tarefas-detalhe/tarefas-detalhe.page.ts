@@ -25,4 +25,5 @@ export class TarefasDetalhePage implements OnInit {
   {
     this.modalController.dismiss();
   }
+  
 }
