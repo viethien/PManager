@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe/tarefas-detalhe.module'
 import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,10 @@ import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tar
     GuardaautenticacaoService,
     LoadHomeService,
     ModalController,
-    TarefadetalheService
+    TarefadetalheService,
+    FormBuilder,
+    FormGroup,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })
