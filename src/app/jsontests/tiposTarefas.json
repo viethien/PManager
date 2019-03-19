@@ -1,0 +1,14 @@
+{
+    "tipostarefas": [
+        {
+            "id": "45645645",
+            "interna": false,
+            "descricao": "Uma tarefa Externa" 
+           },
+        {
+        "id": "12312324",
+        "interna": true,
+        "descricao": "Uma tarefa Interna" 
+       }         
+    ]
+ }

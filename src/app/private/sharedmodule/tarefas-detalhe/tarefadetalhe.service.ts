@@ -11,8 +11,11 @@ export class TarefadetalheService {
 
   constructor(private http: HttpClient) { }
 
-  recuperaDetalhes(): any{
+  recuperaDetalhes(): any {
     return this.http.get("http://localhost:4000/tarefadetalhe")//AQUI DEPOIS TENHO QUE USAR INNTERPOLAÇÃO PRA CHAMAR O GET CERTO
 
- }
+  }
+  recuperaTiposTarefas(): any {
+    return this.http.get("http://localhost:5000/tiposTarefas")
+  }
 }

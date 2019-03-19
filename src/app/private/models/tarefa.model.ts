@@ -1,3 +1,5 @@
+import { TipoTarefa } from './tipotarefa.model';
+
 export interface Tarefa{
     tarefa: string,
     numero: number,
@@ -5,8 +7,7 @@ export interface Tarefa{
     descricao: string,
     id_cliente: string,
     nome_cliente: string,
-    id_tipotarefa: string,
-    desc_tipotarefa: string,
+    tipoTarefa: TipoTarefa
     data_tarefa: string,
     status_tarefa: number,
     id_solicitante: string,

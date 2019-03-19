@@ -7,7 +7,11 @@
         "descricao": "Uma Descricao",
         "id_cliente": "asdasd",
         "nome_cliente": "José das couves",
-        "id_tipotarefa": "asdasd",
+        "tipoTarefa": {          
+            "id": "12312324",
+            "interna": true,
+            "descricao": "Uma tarefa Interna"            
+        },
         "desc_tipotarefa": "Visita",
         "data_tarefa": "2019-06-02",
         "status_tarefa": 1,
