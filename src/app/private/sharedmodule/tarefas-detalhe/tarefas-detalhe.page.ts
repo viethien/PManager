@@ -11,41 +11,59 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./tarefas-detalhe.page.scss'],
 })
 export class TarefasDetalhePage implements OnInit {
- idTarefa = null
- tarefa: Tarefa
- tiposTarefas : TipoTarefa[]
- formulario: FormGroup
+  idTarefa = null
+  tarefa: Tarefa
+  tiposTarefas: TipoTarefa[]
+  formulario: FormGroup
   constructor(
     private navParams: NavParams,
     private getTarefaDetalhe: TarefadetalheService,
-    private modalController:ModalController,
-    public fb: FormBuilder) {   }
+    private modalController: ModalController,
+    public fb: FormBuilder) { }
 
   ngOnInit() {
-    this.getGeral()
-    this.getTiposTarefas()
+
     this.createForm()
   }
 
-  getGeral(){
+  getGeral() {
     this.idTarefa = this.navParams.get('id_tarefa');
-    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data)=>{ //passar o id da tarefa como parametro no recupera detalhes
-    this.tarefa = data
-   })
+    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data: Tarefa) => { //passar o id da tarefa como parametro no recupera detalhes
+      this.tarefa = data
+    })
+
   }
-  getTiposTarefas(){
-    this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((data)=>{
+  getTiposTarefas() {
+    this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((data: TipoTarefa[]) => {
       this.tiposTarefas = data
     })
   }
-
-  createForm(){
-    this.formulario = this.fb.group({
-      'tipotarefa':['', Validators.compose([Validators.required])]
-   });
+  createForm() {
+    this.getGeral();
+    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data: Tarefa) => {
+      this.tarefa = data;
+      this.formulario = this.fb.group({
+        'tipo_tarefa': [this.tarefa.tipoTarefa.id, Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
+        'data_tarefa': [this.tarefa.data_tarefa, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        'inicio_tarefa': [this.tarefa.inicio, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        'fim_tarefa': [this.tarefa.fim, Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
+      });
+    })
   }
- closeModal()
- {
-   this.modalController.dismiss();
- }
+
+
+  /* createForm() {
+     this.getGeral()
+     this.getTiposTarefas()
+     this.formulario = this.fb.group({
+       'tipo_tarefa': [this.tarefa.tipoTarefa.id, Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
+       'data_tarefa': [this.tarefa.data_tarefa, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+       'inicio_tarefa': [this.tarefa.inicio, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+       'fim_tarefa': [this.tarefa.fim, Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
+     });
+   }*/
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
 }

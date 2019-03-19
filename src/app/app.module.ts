@@ -18,13 +18,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe/tarefas-detalhe.module'
 import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-     IonicStorageModule.forRoot(),HttpClientModule,  TarefasDetalhePageModule   ],
+  imports: [BrowserModule, IonicModule.forRoot(), 
+     AppRoutingModule,
+     IonicStorageModule.forRoot(),
+     HttpClientModule,
+     TarefasDetalhePageModule     
+ ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -33,10 +36,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
     GuardaautenticacaoService,
     LoadHomeService,
     ModalController,
-    TarefadetalheService,
-    FormBuilder,
-    FormGroup,
-    ReactiveFormsModule
+    TarefadetalheService
   ],
   bootstrap: [AppComponent]
 })
