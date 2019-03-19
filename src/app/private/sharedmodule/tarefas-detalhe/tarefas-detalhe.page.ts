@@ -22,8 +22,12 @@ export class TarefasDetalhePage implements OnInit {
     public fb: FormBuilder) { }
 
   ngOnInit() {
-
-    this.createForm()
+    this.getGeral()
+    this.getTiposTarefas()
+    if(this.tarefa && this.tiposTarefas != null){
+      this.createForm()
+    }
+    
   }
 
   getGeral() {
@@ -38,30 +42,17 @@ export class TarefasDetalhePage implements OnInit {
       this.tiposTarefas = data
     })
   }
+
+
   createForm() {
-    this.getGeral();
-    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data: Tarefa) => {
-      this.tarefa = data;
-      this.formulario = this.fb.group({
-        'tipo_tarefa': [this.tarefa.tipoTarefa.id, Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
-        'data_tarefa': [this.tarefa.data_tarefa, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'inicio_tarefa': [this.tarefa.inicio, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'fim_tarefa': [this.tarefa.fim, Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
-      });
-    })
-  }
-
-
-  /* createForm() {
-     this.getGeral()
-     this.getTiposTarefas()
      this.formulario = this.fb.group({
        'tipo_tarefa': [this.tarefa.tipoTarefa.id, Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
        'data_tarefa': [this.tarefa.data_tarefa, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
        'inicio_tarefa': [this.tarefa.inicio, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
        'fim_tarefa': [this.tarefa.fim, Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
      });
-   }*/
+     return true
+   }
 
   closeModal() {
     this.modalController.dismiss();
