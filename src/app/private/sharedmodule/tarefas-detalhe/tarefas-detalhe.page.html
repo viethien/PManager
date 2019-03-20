@@ -13,24 +13,37 @@
     <h4>
       <ion-icon name="list-box"></ion-icon> Geral
     </h4>
+    <ion-item-divider></ion-item-divider>
     <ion-grid>
       <ion-row>
-        <ion-col size="8">
+        <ion-col size="12">
           <ion-item>
           <ion-label position="stacked">Tipo de Tarefa</ion-label>
-          <ion-select formControlName="tipoTarefa" okText="Confirmar" cancelText="Cancelar">
+          <ion-item>
+            <select-searchable
+            item-content
+            [(ngModel)] = "tipoTarefa"
+            [items] = "tipoTarefa"
+            itemValueField = "tipoTarefa.id"
+            itemTextField = "tipoTarefa.descricao"
+            >
+            </select-searchable>
+          </ion-item>
+          <!---<ion-select formControlName="tipoTarefa" okText="Confirmar" cancelText="Cancelar">
             <ion-select-option *ngFor="let tipo of tiposTarefas" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
+          </ion-select>-->
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+          <ion-label position="stacked">Projeto</ion-label>
+          <ion-select formControlName="projeto" okText="Confirmar" cancelText="Cancelar">
+            <ion-select-option *ngFor="let projeto of projetos" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
           </ion-select>
         </ion-item>
         </ion-col>
-        <ion-col size="4">
-            <ion-item>
-            <ion-label position="stacked">Projeto</ion-label>
-            <ion-select formControlName="projeto" okText="Confirmar" cancelText="Cancelar">
-              <ion-select-option *ngFor="let projeto of projetos" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-          </ion-col>
       </ion-row>
     <h4>
       <ion-icon name="calendar"></ion-icon> Horário
@@ -60,7 +73,7 @@
             <ion-col size="6" text-center>
                 <ion-item lines="none" >
                   <ion-label position="stacked">Hora Fim</ion-label>
-                  <ion-datetime formControlName="hora_fim" display-format="DD-MM-YYYY" max="2050-10-31" picker-format="DD-MM-YYYY"></ion-datetime>
+                  <ion-datetime formControlName="hora_fim" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
                 </ion-item>
               </ion-col>
       </ion-row>      
@@ -68,7 +81,6 @@
     <h4>
       <ion-icon name="person"></ion-icon> Cliente
     </h4>
-    <ion-item-divider></ion-item-divider>
-  
+    <ion-item-divider></ion-item-divider>  
   </form>
 </ion-content>

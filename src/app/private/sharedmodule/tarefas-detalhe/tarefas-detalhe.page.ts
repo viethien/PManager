@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavParams, ModalController, ToastController, NavController } from '@ionic/angular';
 import { TarefadetalheService } from './tarefadetalhe.service';
 import { Tarefa } from '../../models/tarefa.model';
 import { TipoTarefa } from '../../models/tipotarefa.model';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SelectSearchableComponent } from 'ionic-select-searchable';
 @Component({
   selector: 'app-tarefas-detalhe',
   templateUrl: './tarefas-detalhe.page.html',
   styleUrls: ['./tarefas-detalhe.page.scss'],
 })
 export class TarefasDetalhePage implements OnInit {
+  @ViewChild('tipoTarefa') selectComponent: SelectSearchableComponent;
+
   idTarefa = null
   tarefa: Tarefa
   tiposTarefas: TipoTarefa[]
@@ -19,12 +22,29 @@ export class TarefasDetalhePage implements OnInit {
     private navParams: NavParams,
     private getTarefaDetalhe: TarefadetalheService,
     private modalController: ModalController,
-    public formBuilder: FormBuilder) { }
+    public formBuilder: FormBuilder,
+    private toastCtrl: ToastController
+    private navCtrl: NavController) { }
 
   ngOnInit() {
   this.getGeral()
   this.getTiposTarefas()
     
+  }
+  
+  mudancaTarefa(event: {component: SelectSearchableComponent, value: any}){
+    console.log(event)
+  }
+
+  onClose(){
+    let toast = this.toastCtrl.create({
+      message: 'Valeu',
+      duration: 2000
+    })
+    toast.present()
+  }
+  openFromCode(){
+      this.selectComponent.open()
   }
 
   getGeral() {
@@ -41,17 +61,16 @@ export class TarefasDetalhePage implements OnInit {
     })
   }
   createForm(tarefa: Tarefa) {
-    this.tarefa = tarefa
+    this.tarefa = tarefa;
       this.formulario = this.formBuilder.group({
         'tipoTarefa': ['', Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
+        'projeto': ['', Validators.compose([Validators.required])],
         'data_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
         'data_fim': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
         'hora_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'hora_fim': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        
+        'hora_fim': ['', Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
     })
     this.formulario.patchValue(tarefa)
-    
   }
 
   closeModal() {
