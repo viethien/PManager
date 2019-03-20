@@ -16,7 +16,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="8">
-            <ion-label position="floating">Tipo de Tarefa</ion-label>
+            <ion-label position="stacked">Tipo de Tarefa</ion-label>
           <ion-select formControlName="tipoTarefa" okText="Confirmar" cancelText="Cancelar">
             <ion-select-option *ngFor="let tipo of tiposTarefas" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
           </ion-select>
