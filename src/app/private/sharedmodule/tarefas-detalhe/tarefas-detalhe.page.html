@@ -8,8 +8,8 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content padding *ngIf="tarefa != null">
-  <form [formGroup]="formulario">
+<ion-content padding >
+  <form *ngIf="tarefa != null" [formGroup]="formulario">
     <h4>
       <ion-icon name="list-box"></ion-icon> Geral
     </h4>
@@ -17,7 +17,7 @@
       <ion-row>
         <ion-col size="8">
             <ion-label position="floating">Tipo de Tarefa</ion-label>
-          <ion-select [formControlName]="tipo_tarefa" okText="Confirmar" cancelText="Cancelar">
+          <ion-select formControlName="tipoTarefa" okText="Confirmar" cancelText="Cancelar">
             <ion-select-option *ngFor="let tipo of tiposTarefas" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
           </ion-select>
         </ion-col>
@@ -31,15 +31,15 @@
       <ion-row>
         <ion-col size="5">
           <ion-label position="stacked">Data</ion-label>
-          <ion-datetime  [formControlName]="data_tarefa" display-format="DD-MM-YYYY" max="2050-10-31" picker-format="DD-MM-YYYY"></ion-datetime>
+          <ion-datetime  formControlName="data_tarefa" display-format="DD-MM-YYYY" max="2050-10-31" picker-format="DD-MM-YYYY"></ion-datetime>
         </ion-col>
         <ion-col size="3">
           <ion-label position="stacked">Inicio</ion-label>
-          <ion-datetime  [formControlName]="inicio_tarefa" display-format="HH:mm" picker-format="HH:mm" ></ion-datetime>
+          <ion-datetime  formControlName="inicio" display-format="HH:mm" picker-format="HH:mm" ></ion-datetime>
         </ion-col>
         <ion-col size="3">
           <ion-label position="stacked">Fim</ion-label>
-          <ion-datetime  [formControlName]="fim_tarefa" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
+          <ion-datetime  formControlName="fim" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
         </ion-col>
       </ion-row>
     </ion-grid>
