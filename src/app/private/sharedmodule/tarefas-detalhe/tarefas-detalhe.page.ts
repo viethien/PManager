@@ -19,40 +19,40 @@ export class TarefasDetalhePage implements OnInit {
     private navParams: NavParams,
     private getTarefaDetalhe: TarefadetalheService,
     private modalController: ModalController,
-    public fb: FormBuilder) { }
+    public formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getGeral()
-    this.getTiposTarefas()
-    if(this.tarefa && this.tiposTarefas != null){
-      this.createForm()
-    }
+  this.getGeral()
+  this.getTiposTarefas()
     
   }
 
   getGeral() {
     this.idTarefa = this.navParams.get('id_tarefa');
     this.getTarefaDetalhe.recuperaDetalhes().subscribe((data: Tarefa) => { //passar o id da tarefa como parametro no recupera detalhes
-      this.tarefa = data
+       this.createForm(data)
     })
 
   }
-  getTiposTarefas() {
+  getTiposTarefas(tipos?: TipoTarefa[]) {
+    this.tiposTarefas = tipos
     this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((data: TipoTarefa[]) => {
-      this.tiposTarefas = data
+       this.getTiposTarefas(data)
     })
   }
-
-
-  createForm() {
-     this.formulario = this.fb.group({
-       'tipo_tarefa': [this.tarefa.tipoTarefa.id, Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
-       'data_tarefa': [this.tarefa.data_tarefa, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-       'inicio_tarefa': [this.tarefa.inicio, Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-       'fim_tarefa': [this.tarefa.fim, Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
-     });
-     return true
-   }
+  createForm(tarefa: Tarefa) {
+    this.tarefa = tarefa
+      this.formulario = this.formBuilder.group({
+        'tipoTarefa': ['', Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
+        'data_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        'data_fim': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        'hora_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        'hora_fim': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
+        
+    })
+    this.formulario.patchValue(tarefa)
+    
+  }
 
   closeModal() {
     this.modalController.dismiss();
