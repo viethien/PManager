@@ -24,7 +24,6 @@ export class TarefasDetalhePage implements OnInit {
     private getTarefaDetalhe: TarefadetalheService,
     private modalController: ModalController,
     public formBuilder: FormBuilder,
-    private toastCtrl: ToastController
     ) { }
 
   ngOnInit() {

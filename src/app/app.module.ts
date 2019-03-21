@@ -20,6 +20,7 @@ import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe
 import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
 import { IonicSelectableModule } from 'ionic-selectable';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,7 +29,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
      IonicStorageModule.forRoot(),
      HttpClientModule,
      TarefasDetalhePageModule,
-     IonicSelectableModule
+     IonicSelectableModule,
+  
  ],
   providers: [
     StatusBar,

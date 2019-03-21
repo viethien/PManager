@@ -19,19 +19,15 @@
         <ion-col size="12">
           <ion-item>
           <ion-label position="stacked">Tipo de Tarefa</ion-label>
-
-              <ion-label>Port</ion-label>
               <ionic-selectable
+                formControlName="tipoTarefa"
                 [items]="tiposTarefas"
-                itemValueField="tiposTarefas.id"
-                itemTextField="tiposTarefas.descricao"
+                itemValueField="id"
+                itemTextField="descricao"
                 [canSearch]="true"
+                closeButtonText="Fechar"
                 (onChange)="tipoTarefaChange($event)">
               </ionic-selectable>
-
-          <!---<ion-select formControlName="tipoTarefa" okText="Confirmar" cancelText="Cancelar">
-            <ion-select-option *ngFor="let tipo of tiposTarefas" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
-          </ion-select>-->
         </ion-item>
         </ion-col>
       </ion-row>
@@ -39,9 +35,6 @@
         <ion-col size="12">
           <ion-item>
           <ion-label position="stacked">Projeto</ion-label>
-          <ion-select formControlName="projeto" okText="Confirmar" cancelText="Cancelar">
-            <ion-select-option *ngFor="let projeto of projetos" [value]="tipo.id">{{tipo.descricao}}</ion-select-option>
-          </ion-select>
         </ion-item>
         </ion-col>
       </ion-row>
