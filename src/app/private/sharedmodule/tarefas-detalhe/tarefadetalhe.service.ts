@@ -18,4 +18,7 @@ export class TarefadetalheService {
   recuperaTiposTarefas(): any {
     return this.http.get("http://localhost:5000/tiposTarefas")
   }
+  recuperaProjetos(): any{
+    return this.http.get("http://localhost:4200/projetos") 
+  }
 }

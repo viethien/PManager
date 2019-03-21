@@ -5,9 +5,14 @@
         "numero": 12345,
         "comentarios": "Um Comentario",
         "descricao": "Uma Descricao",
-        "cliente":{
-          "cliente": "adasd",
-          "nome": "José das Couves"
+        "projeto":{
+          "id": "5545454",
+          "codigo": "IMPPONT",
+          "nome": "Projeto de Implantação de Ponto Eletrônico",
+          "cliente":{
+            "id": "adasd",
+            "nome": "José das Couves"
+          }
         },
         "tipoTarefa": {          
             "id": "12312324",
@@ -45,11 +50,6 @@
           "justificativa":"Vai Rolar"
         }
       ],
-      "projeto":{
-        "id": "5545454",
-        "codigo": "IMPPONT",
-        "nome": "Projeto de Implantação de Ponto Eletrônico"
-      },
       "etapa":{
         "id":"12312324",
         "codigo": "LEVREQ",

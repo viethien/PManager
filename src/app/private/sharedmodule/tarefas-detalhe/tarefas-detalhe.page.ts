@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavParams, ModalController, ToastController, NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { NavParams, ModalController } from '@ionic/angular';
 import { TarefadetalheService } from './tarefadetalhe.service';
 import { Tarefa } from '../../models/tarefa.model';
 import { TipoTarefa } from '../../models/tipotarefa.model';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicSelectableComponent } from 'ionic-selectable/src/app/components/ionic-selectable/ionic-selectable.component';
+import { Projeto } from '../../models/projeto.model';
 
 @Component({
   selector: 'app-tarefas-detalhe',
@@ -18,6 +19,7 @@ export class TarefasDetalhePage implements OnInit {
   idTarefa = null
   tarefa: Tarefa
   tiposTarefas: TipoTarefa[]
+  projetos: Projeto[]
   formulario: FormGroup
   constructor(
     private navParams: NavParams,
@@ -29,40 +31,55 @@ export class TarefasDetalhePage implements OnInit {
   ngOnInit() {
   this.getGeral()
   this.getTiposTarefas()
-    
+  this.getProjetos()  
   }
 
   getGeral() {
     this.idTarefa = this.navParams.get('id_tarefa');
-    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data: Tarefa) => { //passar o id da tarefa como parametro no recupera detalhes
+    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data) => { //passar o id da tarefa como parametro no recupera detalhes
        this.createForm(data)
     })
 
   }
-  getTiposTarefas(tipos?: TipoTarefa[]) {
-    this.tiposTarefas = tipos
+  getTiposTarefas() {
     this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((data: TipoTarefa[]) => {
-       this.getTiposTarefas(data)
+       this.setTiposTarefas(data);
     })
   }
+  getProjetos(){    
+    this.getTarefaDetalhe.recuperaProjetos().subscribe((data: Projeto[]) => {
+       this.setProjetos(data)
+    })
+  }
+
+  setTiposTarefas(tiposTarefas: TipoTarefa[]){
+    this.tiposTarefas = tiposTarefas;
+  }
+
+  setProjetos(projetos: Projeto[]){
+    this.projetos = projetos;
+  }
+
   createForm(tarefa: Tarefa) {
     this.tarefa = tarefa;
       this.formulario = this.formBuilder.group({
-        'tipoTarefa': ['', Validators.compose([Validators.required])], // Cant set default values cuz the array is object is undefined
+        'tipoTarefa': ['', Validators.compose([Validators.required])], 
         'projeto': ['', Validators.compose([Validators.required])],
-        'data_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'data_fim': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'hora_inicio': ['', Validators.compose([Validators.required])],// Cant set default values cuz the array is object is undefined
-        'hora_fim': ['', Validators.compose([Validators.required])]// Cant set default values cuz the array is object is undefined
+        'data_inicio': ['', Validators.compose([Validators.required])],
+        'data_fim': ['', Validators.compose([Validators.required])],
+        'hora_inicio': ['', Validators.compose([Validators.required])],
+        'hora_fim': ['', Validators.compose([Validators.required])]
     })
     this.formulario.patchValue(tarefa)
+    console.log(tarefa.projeto)
   }
-  tipoTarefaChange(event: {
+  portChange(event: {
     component: IonicSelectableComponent,
-    value: any 
+    value: any
   }) {
     console.log('port:', event.value);
   }
+  
   closeModal() {
     this.modalController.dismiss();
   }

@@ -5,6 +5,9 @@ padding-left: 5px;
 ion-item-divider {
     min-height: 2px !important;
 }
-ion-select{
-    border: 2px black !important;
+.ionic-selectable{
+    border-radius: 7px 7px 7px 7px;
+-moz-border-radius: 7px 7px 7px 7px;
+-webkit-border-radius: 7px 7px 7px 7px;
+border: 0.1px solid #000000;
 }
