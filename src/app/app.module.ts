@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe/tarefas-detalhe.module'
 import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tar
      AppRoutingModule,
      IonicStorageModule.forRoot(),
      HttpClientModule,
-     TarefasDetalhePageModule     
+     TarefasDetalhePageModule,
+     IonicSelectableModule
  ],
   providers: [
     StatusBar,
