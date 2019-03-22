@@ -1,17 +1,17 @@
 {
     "tipostarefas": [
         {
-            "id": "45645645",
+            "tipotarefa": "45645645",
             "interna": false,
             "descricao": "Uma tarefa Externa" 
            },
         {
-        "id": "12312324",
+        "tipotarefa": "12312324",
         "interna": true,
         "descricao": "Uma tarefa Interna" 
        },
        {
-        "id": "555366",
+        "tipotarefa": "555366",
         "interna": false,
         "descricao": "Uma tarefa Aleatoria" 
        }        

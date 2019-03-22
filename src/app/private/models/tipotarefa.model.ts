@@ -1,5 +1,5 @@
 export interface TipoTarefa{
-    id:string,
+    tipotarefa:string,
     interna: boolean,
     descricao: string
 }

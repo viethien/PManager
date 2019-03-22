@@ -1,13 +1,14 @@
 import { TipoTarefa } from './tipotarefa.model';
 import { Sistema } from './sistema.model';
-import { Convidado } from './convidado.model';
+import { Participante } from './participante.model';
 import { Projeto } from './projeto.model';
 import {  EtapaProjeto } from './etapa.model';
+import { Cliente } from './cliente.model';
 export interface Tarefa{
     tarefa: string,
     numero: number,
+    cliente: Cliente[]
     comentarios: string,
-
     descricao: string,
     tipoTarefa: TipoTarefa
     data_inicio: string,
@@ -23,7 +24,7 @@ export interface Tarefa{
     nome_criador: string,
     sistema: Sistema,       
     id_sala?: string,
-    convidados: Convidado[],
+    convidados: Participante[],
     projeto?: Projeto,
     etapa_projeto?: EtapaProjeto
 }

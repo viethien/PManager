@@ -1,26 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 import { TarefadetalheService } from './tarefadetalhe.service';
 import { Tarefa } from '../../models/tarefa.model';
 import { TipoTarefa } from '../../models/tipotarefa.model';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IonicSelectableComponent } from 'ionic-selectable/src/app/components/ionic-selectable/ionic-selectable.component';
+import { IonicSelectableComponent } from 'ionic-selectable';
 import { Projeto } from '../../models/projeto.model';
+import { Cliente } from '../../models/cliente.model';
+
+
 
 @Component({
   selector: 'app-tarefas-detalhe',
   templateUrl: './tarefas-detalhe.page.html',
   styleUrls: ['./tarefas-detalhe.page.scss'],
 })
-export class TarefasDetalhePage implements OnInit {
-  
 
+
+export class TarefasDetalhePage implements OnInit {
+  @ViewChild('loader') loader: IonicSelectableComponent;
+  
   idTarefa = null
   tarefa: Tarefa
+  clientes: Cliente[]
   tiposTarefas: TipoTarefa[]
   projetos: Projeto[]
   formulario: FormGroup
+  formAtivado: boolean = false
   constructor(
     private navParams: NavParams,
     private getTarefaDetalhe: TarefadetalheService,
@@ -29,29 +36,34 @@ export class TarefasDetalhePage implements OnInit {
     ) { }
 
   ngOnInit() {
-  this.getGeral()
-  this.getTiposTarefas()
-  this.getProjetos()  
+  this.getGeral() 
   }
 
   getGeral() {
     this.idTarefa = this.navParams.get('id_tarefa');
-    this.getTarefaDetalhe.recuperaDetalhes().subscribe((data) => { //passar o id da tarefa como parametro no recupera detalhes
-       this.createForm(data)
+    this.getTarefaDetalhe.recuperaDetalhes().subscribe((tarefa: Tarefa) => { //passar o id da tarefa como parametro no recupera detalhes
+       this.createForm(tarefa)
     })
 
   }
   getTiposTarefas() {
-    this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((data: TipoTarefa[]) => {
-       this.setTiposTarefas(data);
+    this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((tipostarefas: TipoTarefa[]) => {
+       this.setTiposTarefas(tipostarefas);
     })
   }
   getProjetos(){    
-    this.getTarefaDetalhe.recuperaProjetos().subscribe((data: Projeto[]) => {
-       this.setProjetos(data)
+    this.getTarefaDetalhe.recuperaProjetos().subscribe((projetos: Projeto[]) => {
+       this.setProjetos(projetos)
     })
   }
-
+  getClientes(){    
+    this.getTarefaDetalhe.recuperaClientes().subscribe((clientes: Cliente[]) => {
+       this.setClientes(clientes)
+    })
+  }
+  setClientes(clientes){
+    this.clientes = clientes
+  }
   setTiposTarefas(tiposTarefas: TipoTarefa[]){
     this.tiposTarefas = tiposTarefas;
   }
@@ -60,9 +72,11 @@ export class TarefasDetalhePage implements OnInit {
     this.projetos = projetos;
   }
 
+
   createForm(tarefa: Tarefa) {
     this.tarefa = tarefa;
       this.formulario = this.formBuilder.group({
+        'cliente': ['', Validators.compose([Validators.required])], 
         'tipoTarefa': ['', Validators.compose([Validators.required])], 
         'projeto': ['', Validators.compose([Validators.required])],
         'data_inicio': ['', Validators.compose([Validators.required])],
@@ -71,15 +85,17 @@ export class TarefasDetalhePage implements OnInit {
         'hora_fim': ['', Validators.compose([Validators.required])]
     })
     this.formulario.patchValue(tarefa)
-    console.log(tarefa.projeto)
   }
-  portChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('port:', event.value);
+  ativaForm(){
+    if(this.formAtivado){
+      this.formAtivado = false
+    } else{
+      this.formAtivado = true
+    }
   }
-  
+  showLoading(){
+    this.loader.showLoading()
+  }
   closeModal() {
     this.modalController.dismiss();
   }

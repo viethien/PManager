@@ -5,14 +5,13 @@
         "numero": 12345,
         "comentarios": "Um Comentario",
         "descricao": "Uma Descricao",
+        "cliente":{
+            "id": "45645645",
+            "nome": "Zezinho"
+          },
         "projeto":{
-          "id": "5545454",
-          "codigo": "IMPPONT",
-          "nome": "Projeto de Implantação de Ponto Eletrônico",
-          "cliente":{
-            "id": "adasd",
-            "nome": "José das Couves"
-          }
+          "id": "45645645",         
+          "descricao": "Projeto de Implantação de Ponto Eletrônico"
         },
         "tipoTarefa": {          
             "id": "12312324",

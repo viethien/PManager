@@ -1,0 +1,61 @@
+{
+    "clientes": [
+        {
+            "cliente": "45645645",
+            "razaosocial": "Zezinho",
+            "endereco": {
+            "logradouro":"AV PASSOS",
+            "bairro": "Centro",
+            "complemento":"C2",  
+            "referencia": "Perto de algum lugar",
+            "nome_municipio": "Rio de Janeiro",
+            "id_municipio": "54545454",
+            "uf": "RJ",
+            "nuf":"Rio de Janeiro",
+            "maps":{
+                "lat": "9595959",
+                "long": "5656565"
+            }
+            
+            }
+        },
+        {
+            "cliente": "45345345",
+            "razaosocial": "Jorginho",
+            "endereco": {
+            "logradouro":"AV PASSOS",
+            "bairro": "Centro",
+            "complemento":"C2",  
+            "referencia": "Perto de algum lugar",
+            "nome_municipio": "Rio de Janeiro",
+            "id_municipio": "54545454",
+            "uf": "RJ",
+            "nuf":"Rio de Janeiro",
+            "maps":{
+                "lat": "9595959",
+                "long": "5656565"
+            }
+            
+            }
+        },
+        {
+            "cliente": "568354678",
+            "razaosocial": "Alice",
+            "endereco": {
+            "logradouro":"AV PASSOS",
+            "bairro": "Centro",
+            "complemento":"C2",  
+            "referencia": "Perto de algum lugar",
+            "nome_municipio": "Rio de Janeiro",
+            "id_municipio": "54545454",
+            "uf": "RJ",
+            "nuf":"Rio de Janeiro",
+            "maps":{
+                "lat": "9595959",
+                "long": "5656565"
+            }
+            
+            }
+        }
+    ]
+}

@@ -1,4 +1,5 @@
 export interface EtapaProjeto{
+    etapa: string,
     projeto: string, //id
     tempo: string,
     codigo: string,

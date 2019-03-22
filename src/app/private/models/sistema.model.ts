@@ -1,5 +1,5 @@
 export interface Sistema{
-    id: string,
+    sistema: string,
     codigo: string,
     nome: string,
     equipe_resp: string

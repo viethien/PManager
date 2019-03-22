@@ -11,42 +11,72 @@
 <ion-content padding>
   <form *ngIf="tarefa != null" [formGroup]="formulario">
     <h4>
+      <ion-icon name="person"></ion-icon> Cliente
+    </h4>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Cliente</ion-label>
+      <ionic-selectable
+      formControlName="cliente"
+      [items]="clientes" 
+      itemValueField="cliente"
+      itemTextField="razaosocial" 
+      [canSearch]="true" 
+      closeButtonText="Fechar" 
+      (click)="getClientes()" 
+      [disabled] ="formativado"
+      #loader>
+      </ionic-selectable>
+    </ion-item>
+    <h4>
       <ion-icon name="list-box"></ion-icon> Geral
+    </h4>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Tipo de Tarefa</ion-label>
+      <ionic-selectable 
+      formControlName="tipoTarefa" 
+      [items]="tiposTarefas" 
+      itemValueField="tipotarefa"
+      itemTextField="descricao" 
+      [canSearch]="true" 
+      closeButtonText="Fechar" 
+      (click)="getTiposTarefas()" 
+      #loader>
+      </ionic-selectable>
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Projeto</ion-label>
+      <ionic-selectable 
+      formControlName="projeto" 
+      [items]="projetos" 
+      itemValueField="projeto" 
+      itemTextField="descricao"
+      [canSearch]="true" 
+      closeButtonText="Fechar" 
+      (click)="getProjetos()" 
+      #loader>
+      </ionic-selectable>
+    </ion-item>
+
+    <h4>
+      <ion-icon name="calendar"></ion-icon> Horário
     </h4>
     <ion-item-divider></ion-item-divider>
     <ion-grid>
       <ion-row>
-        <ion-col size="12">
-          <ion-item lines="none">
-            <ion-label position="stacked">Tipo de Tarefa</ion-label>
-            <ionic-selectable formControlName="tipoTarefa" [items]="tiposTarefas" itemValueField="id" itemTextField="descricao"
-              [canSearch]="true" closeButtonText="Fechar" (onChange)="portChange($event)" [shouldBackdropClose]="false">
-            </ionic-selectable>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <ion-item lines="none">
-            <ion-label position="stacked">Projeto</ion-label>
-            <!--<ionic-selectable formControlName="projeto" [items]="projetos" itemValueField="id" itemTextField="descricao"
-              [canSearch]="true" closeButtonText="Fechar">
-            </ionic-selectable>-->
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <h4>
-        <ion-icon name="calendar"></ion-icon> Horário
-      </h4>
-      <ion-item-divider></ion-item-divider>
-      <ion-row>
         <ion-col size="6" text-center>
           <ion-item lines="none">
             <ion-label position="stacked">Data Início</ion-label>
-            <ion-datetime formControlName="data_inicio" display-format="DD-MM-YYYY" max="2050-10-31" picker-format="DD-MM-YYYY"></ion-datetime>
+            <ion-datetime formControlName="data_inicio" display-format="DD-MM-YYYY" max="2050-10-31"
+              picker-format="DD-MM-YYYY"></ion-datetime>
           </ion-item>
         </ion-col>
-        <ion-col size="6" text-center>
+        <ion-col size="6" text-right>
           <ion-item lines="none">
             <ion-label position="stacked">Hora Inicio</ion-label>
             <ion-datetime formControlName="hora_inicio" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
@@ -57,10 +87,11 @@
         <ion-col size="6" text-center>
           <ion-item lines="none">
             <ion-label position="stacked">Data Fim</ion-label>
-            <ion-datetime formControlName="data_fim" display-format="DD-MM-YYYY" max="2050-10-31" picker-format="DD-MM-YYYY"></ion-datetime>
+            <ion-datetime formControlName="data_fim" display-format="DD-MM-YYYY" max="2050-10-31"
+              picker-format="DD-MM-YYYY"></ion-datetime>
           </ion-item>
         </ion-col>
-        <ion-col size="6" text-center>
+        <ion-col size="6" text-right>
           <ion-item lines="none">
             <ion-label position="stacked">Hora Fim</ion-label>
             <ion-datetime formControlName="hora_fim" display-format="HH:mm" picker-format="HH:mm"></ion-datetime>
@@ -68,9 +99,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <h4>
-      <ion-icon name="person"></ion-icon> Cliente
-    </h4>
+
     <ion-item-divider></ion-item-divider>
   </form>
 </ion-content>
