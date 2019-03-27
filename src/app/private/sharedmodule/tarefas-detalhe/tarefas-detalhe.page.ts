@@ -71,7 +71,9 @@ export class TarefasDetalhePage implements OnInit {
   setProjetos(projetos: Projeto[]){
     this.projetos = projetos;
   }
-
+  zeraSelects(){
+    this.setProjetos(null)
+  }
 
   createForm(tarefa: Tarefa) {
     this.tarefa = tarefa;

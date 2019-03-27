@@ -25,6 +25,7 @@
       [canSearch]="true" 
       closeButtonText="Fechar" 
       (click)="getClientes()" 
+      (onChange) = "zeraSelects()"
       [disabled] ="formativado"
       #loader>
       </ionic-selectable>
