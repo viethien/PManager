@@ -19,6 +19,7 @@ export class HomePage  {
 
   ngOnInit() {
     this.homeService.getTarefasHome().subscribe((data)=>{
+      console.log(data)
     this.tarefasHome = data 
     this.showInternas()
   })
