@@ -20,7 +20,7 @@ import { Cliente } from '../../models/cliente.model';
 
 export class TarefasDetalhePage implements OnInit {
   @ViewChild('loader') loader: IonicSelectableComponent;
-  
+
   idTarefa = null
   tarefa: Tarefa
   clientes: Cliente[]
@@ -32,70 +32,71 @@ export class TarefasDetalhePage implements OnInit {
     private navParams: NavParams,
     private getTarefaDetalhe: TarefadetalheService,
     private modalController: ModalController,
-    public formBuilder: FormBuilder,
-    ) { }
+    public formBuilder: FormBuilder
+
+  ) { }
 
   ngOnInit() {
-  this.getGeral() 
+    this.getGeral()
   }
 
   getGeral() {
     this.idTarefa = this.navParams.get('id_tarefa');
     this.getTarefaDetalhe.recuperaDetalhes().subscribe((tarefa: Tarefa) => { //passar o id da tarefa como parametro no recupera detalhes
-       this.createForm(tarefa)
+      this.createForm(tarefa)
     })
 
   }
   getTiposTarefas() {
     this.getTarefaDetalhe.recuperaTiposTarefas().subscribe((tipostarefas: TipoTarefa[]) => {
-       this.setTiposTarefas(tipostarefas);
+      this.setTiposTarefas(tipostarefas);
     })
   }
-  getProjetos(){    
+  getProjetos() {
     this.getTarefaDetalhe.recuperaProjetos().subscribe((projetos: Projeto[]) => {
-       this.setProjetos(projetos)
+      this.setProjetos(projetos)
     })
   }
-  getClientes(){    
+  getClientes() {
     this.getTarefaDetalhe.recuperaClientes().subscribe((clientes: Cliente[]) => {
-       this.setClientes(clientes)
+      this.setClientes(clientes)
     })
   }
-  setClientes(clientes){
+  setClientes(clientes) {
     this.clientes = clientes
   }
-  setTiposTarefas(tiposTarefas: TipoTarefa[]){
+  setTiposTarefas(tiposTarefas: TipoTarefa[]) {
     this.tiposTarefas = tiposTarefas;
   }
 
-  setProjetos(projetos: Projeto[]){
+  setProjetos(projetos: Projeto[]) {
     this.projetos = projetos;
   }
-  zeraSelects(){
+  zeraSelects() {
     this.setProjetos(null)
   }
 
   createForm(tarefa: Tarefa) {
     this.tarefa = tarefa;
-      this.formulario = this.formBuilder.group({
-        'cliente': ['', Validators.compose([Validators.required])], 
-        'tipoTarefa': ['', Validators.compose([Validators.required])], 
-        'projeto': ['', Validators.compose([Validators.required])],
-        'data_inicio': ['', Validators.compose([Validators.required])],
-        'data_fim': ['', Validators.compose([Validators.required])],
-        'hora_inicio': ['', Validators.compose([Validators.required])],
-        'hora_fim': ['', Validators.compose([Validators.required])]
+    this.formulario = this.formBuilder.group({
+      'cliente': ['', Validators.compose([Validators.required])],
+      'tipoTarefa': ['', Validators.compose([Validators.required])],
+      'projeto': ['', Validators.compose([Validators.required])],
+      'data_inicio': ['', Validators.compose([Validators.required])],
+      'data_fim': ['', Validators.compose([Validators.required])],
+      'hora_inicio': ['', Validators.compose([Validators.required])],
+      'hora_fim': ['', Validators.compose([Validators.required])]
     })
     this.formulario.patchValue(tarefa)
   }
-  ativaForm(){
-    if(this.formAtivado){
+  ativaForm() {
+    if (this.formAtivado) {
       this.formAtivado = false
-    } else{
+    } else {
       this.formAtivado = true
     }
   }
-  showLoading(){
+  showLoading() {
     this.loader.showLoading()
   }
   closeModal() {

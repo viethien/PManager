@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
@@ -18,7 +18,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
@@ -26,4 +25,4 @@ const routes: Routes = [
   ],
   declarations: [TarefasDetalhePage]
 })
-export class TarefasDetalhePageModule {}
+export class TarefasDetalhePageModule { }

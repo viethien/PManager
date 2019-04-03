@@ -24,14 +24,16 @@ import { IonicSelectableModule } from 'ionic-selectable';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), 
-     AppRoutingModule,
-     IonicStorageModule.forRoot(),
-     HttpClientModule,
-     TarefasDetalhePageModule,
-     IonicSelectableModule,
-  
- ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
+    TarefasDetalhePageModule,
+    IonicSelectableModule,
+
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -44,4 +46,4 @@ import { IonicSelectableModule } from 'ionic-selectable';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
