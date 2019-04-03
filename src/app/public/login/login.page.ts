@@ -18,7 +18,20 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.createFormLogin()
   }
+  createFormLogin() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      senha: ['', Validators.compose([Validators.required, Validators.maxLength(30)])]
+    })
+    console.log(this.loginForm.value)
+  }
   
+  validar(){
+    if(this.loginForm.valid){
+      this.autenticar()
+    }
+  }
+    
   autenticar() { 
     this.auth.login(this.loginForm.value).subscribe((data) => {
       this.setRetorno(data)
@@ -39,11 +52,5 @@ export class LoginPage implements OnInit {
 setRetorno(retorno){
   this.retorno = retorno
 }
-  createFormLogin() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      senha: ['', Validators.compose([Validators.required, Validators.maxLength(30)])]
-    })
-    console.log(this.loginForm.value)
-  }
+
 }
