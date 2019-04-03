@@ -21,10 +21,9 @@ export class AutenticacaoService {
     })
   }
 
+
   login(userdata) {
-    return this.http.post(`${API}/autenticar`, userdata, {
-      headers: { 'Access-Control-Allow-Origin': '*' }
-    })
+    return this.http.post(`${API}/autenticar`, userdata)
   }
   logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
