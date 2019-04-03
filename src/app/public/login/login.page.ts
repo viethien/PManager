@@ -23,7 +23,8 @@ export class LoginPage implements OnInit {
       email: ['', Validators.compose([Validators.required, Validators.email])],
       senha: ['', Validators.compose([Validators.required, Validators.maxLength(30)])]
     })
-    console.log(this.loginForm.value)
+    console.log(this.loginForm)
+    console.log(this.loginForm)
   }
   
   validar(){
@@ -40,13 +41,16 @@ export class LoginPage implements OnInit {
   }
 
   async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Ooops!',
-      //subHeader: 'Subtitle',
-      message: this.retorno.msg,
-      buttons: ['OK']
-  });
-  await alert.present();
+    if (typeof this.retorno.msg === 'undefined'){
+      const alert = await this.alertController.create({
+        header: 'Ooops!',
+        //subHeader: 'Subtitle',
+        message: this.retorno.msg,
+        buttons: ['OK']
+    });
+  
+   }
+   await alert.present();
 }
 
 setRetorno(retorno){
