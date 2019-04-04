@@ -1,4 +1,4 @@
-export interface Usuario{
+export interface Usuario {
     usuario?: string,
     id_equipe?: string,
     id_cargo?: string,
@@ -18,4 +18,5 @@ export interface Usuario{
     complemento?: string,
     datanascimento?: string,
     id_perfil?: string
+    msg?: string //para casos de retorno do banco
 }

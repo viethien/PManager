@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { Usuario } from '../../private/models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,9 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- retorno: any
+
   loginForm: FormGroup
+  dadosusuario: Usuario
   constructor(private auth: AutenticacaoService,
     public formBuilder: FormBuilder,
     public alertController: AlertController) { }
@@ -21,40 +23,65 @@ export class LoginPage implements OnInit {
   createFormLogin() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      senha: ['', Validators.compose([Validators.required, Validators.maxLength(30)])]
+      senha: ['', Validators.compose([Validators.required, Validators.maxLength(30), Validators.minLength(8)])]
     })
     console.log(this.loginForm)
-    console.log(this.loginForm)
   }
-  
-  validar(){
-    if(this.loginForm.valid){
+
+  validar() {
+    if (this.loginForm.valid) {
       this.autenticar()
     }
   }
-    
-  autenticar() { 
+
+  autenticar() {
     this.auth.login(this.loginForm.value).subscribe((data) => {
-      this.setRetorno(data)
+      this.setDadosUsuario(data)
     })
-    this.presentAlert()
   }
 
-  async presentAlert() {
-    if (typeof this.retorno.msg === 'undefined'){
+  getDadosUsuario() {
+    return this.dadosusuario;
+  }
+  setDadosUsuario(dadosusuario) {
+    this.dadosusuario = dadosusuario
+    this.checaRetorno(dadosusuario)
+  }
+  async checaRetorno(dadosusuario) {
+    console.log(dadosusuario)
+    if (dadosusuario.hasOwnProperty('usuario')) {
+      this.iniciarSessao(dadosusuario)
+    }
+    else if (dadosusuario.hasOwnProperty('msg') === true) { //Query executou mas n achou o usuario
+      console.log("entrei aqui")
       const alert = await this.alertController.create({
         header: 'Ooops!',
-        //subHeader: 'Subtitle',
-        message: this.retorno.msg,
+        message: dadosusuario.msg,
         buttons: ['OK']
-    });
-  
-   }
-   await alert.present();
-}
+      });
+      await alert.present();
+    } else if (typeof dadosusuario[0] != 'undefined') { //erro de validação no servidor
+      console.log("entrei aqui")
+      const alert = await this.alertController.create({
+        header: 'Ooops!',
+        message: dadosusuario[0].msg,
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+  }
 
-setRetorno(retorno){
-  this.retorno = retorno
-}
+
+  verificaValidTouched(campo) {
+    return !this.loginForm.get(campo).valid && this.loginForm.get(campo).touched
+  }
+  aplicaCssErro(campo) {
+    return {
+      'invalid': this.verificaValidTouched(campo),
+    }
+  }
+  iniciarSessao(dadosusuario) {
+    this.auth.storeData(true, dadosusuario)
+  }
 
 }

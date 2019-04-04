@@ -1,14 +1,20 @@
 <ion-content padding>
   <form *ngIf="loginForm" [formGroup]="loginForm">
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input formControlName="email" type="text"></ion-input>
-      
+      <ion-input [class.invalid]="verificaValidTouched('email')" formControlName="email" type="text"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="verificaValidTouched('email')" lines="none">
+      <p class="msg">E-mail Inválido.</p>
+    </ion-item>
+
+    <ion-item lines="none">
       <ion-label position="floating">Senha</ion-label>
-      <ion-input formControlName="senha" type="password"></ion-input>
-     
+      <ion-input [class.invalid]="verificaValidTouched('senha')" formControlName="senha" type="password"></ion-input>
+
+    </ion-item>
+    <ion-item *ngIf="verificaValidTouched('senha')" lines="none">
+      <p class="msg">Senha Inválida.(Deve conter entre 8 e 32 caracteres)</p>
     </ion-item>
     <ion-button (click)="validar()" expand="block">Login</ion-button>
   </form>

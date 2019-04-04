@@ -5,6 +5,8 @@ import { Platform } from '@ionic/angular'
 import { HttpClient } from '@angular/common/http';
 import { API } from '../app.api'
 
+import { UserStorageService } from './userStorage.service'
+
 const TOKEN_KEY = 'auth-token';
 
 @Injectable({
@@ -15,7 +17,9 @@ export class AutenticacaoService {
   statusAutenticacao = new BehaviorSubject(false)
   constructor(private storage: Storage,
     private plt: Platform,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private UserStorageService: UserStorageService
+  ) {
     this.plt.ready().then(() => {
       this.checkToken()
     })
@@ -24,6 +28,14 @@ export class AutenticacaoService {
 
   login(userdata) {
     return this.http.post(`${API}/autenticar`, userdata)
+  }// pronto
+  storeData(token, dadosusuario) {
+    this.storage.set(TOKEN_KEY, 'xmlapqi2345623g').then(res => {
+      console.log(dadosusuario)
+      this.statusAutenticacao.next(true);
+      this.UserStorageService.init(dadosusuario)
+    })
+    this.UserStorageService.getDadosUsuario()
   }
   logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {

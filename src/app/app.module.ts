@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TarefasDetalhePageModule } from './private/sharedmodule/tarefas-detalhe/tarefas-detalhe.module'
 import { TarefadetalheService } from './private/sharedmodule/tarefas-detalhe/tarefadetalhe.service';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { UserStorageService } from './services/userStorage.service';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
     GuardaautenticacaoService,
     LoadHomeService,
     ModalController,
-    TarefadetalheService
+    TarefadetalheService,
+    UserStorageService
   ],
   bootstrap: [AppComponent]
 })
