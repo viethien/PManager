@@ -28,14 +28,13 @@ export class AutenticacaoService {
 
   login(userdata) {
     return this.http.post(`${API}/autenticar`, userdata)
-  }// pronto
+  }
   storeData(token, dadosusuario) {
     this.storage.set(TOKEN_KEY, 'xmlapqi2345623g').then(res => {
       console.log(dadosusuario)
       this.statusAutenticacao.next(true);
-      this.UserStorageService.init(dadosusuario)
+      this.UserStorageService.criarSessao(dadosusuario)
     })
-    this.UserStorageService.getDadosUsuario()
   }
   logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
@@ -55,3 +54,4 @@ export class AutenticacaoService {
     })
   }
 }
+

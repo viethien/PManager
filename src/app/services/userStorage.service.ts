@@ -16,7 +16,7 @@ export class UserStorageService {
 
   ) { }
 
-  init(dadosusuario: Usuario) { //inicializo o usuario
+  criarSessao(dadosusuario: Usuario) { //inicializo o usuario
     return this.storage.get(USUARIO).then((usuario: Usuario) => {
       if (usuario) {
         usuario = dadosusuario
@@ -28,13 +28,13 @@ export class UserStorageService {
     })
   }
 
-  getDadosUsuario(): Promise<Usuario> {
-    console.log(USUARIO)
+  getSessao(): Promise<Usuario> {
     return this.storage.get(USUARIO)
   }
 
-  updateUsuario() {
+  atualizaDados() {
 
   }
+
 
 }

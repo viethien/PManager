@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
-    {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
+  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' }
 ];
 @NgModule({
   imports: [
@@ -9,4 +9,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class PrivateRoutingModule {}
+export class PrivateRoutingModule { }

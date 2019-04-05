@@ -34,7 +34,7 @@ const routes: Routes = [
             loadChildren: '../tarefas/tarefas.module#TarefasPageModule'
           }
         ]
-      },      
+      },
       {
         path: 'cadastros',
         children: [
@@ -50,6 +50,15 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../relatorios/relatorios.module#RelatoriosPageModule'
+          }
+        ]
+      },
+      {
+        path: 'usuario-detalhe',
+        children: [
+          {
+            path: '',
+            loadChildren: '../sharedmodule/usuario-detalhe/usuario-detalhe.module#UsuarioDetalhePageModule'
           }
         ]
       },
@@ -69,4 +78,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

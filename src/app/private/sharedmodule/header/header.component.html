@@ -1,15 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons>
-      <ion-button>
-        <ion-icon slot="icon-only" name="contact"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>{{username}}</ion-title>
+
+    <ion-item lines="none" *ngIf="usuario !=null">
+      <a [routerLink]="['/usuario-detalhe']">
+        <ion-avatar slot="start">
+
+          <img
+            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3e/3eb6c8bae0aa5dbb209912a4b2d0bd3c535134be.jpg">
+
+        </ion-avatar>
+      </a>
+      <ion-label>
+        <h3>{{usuario.nome_usuario}}</h3>
+        <ion-text class="grey"><small color>{{usuario.nome_cargo}}</small></ion-text>
+      </ion-label>
+      <a>
+        <ion-button (click)="logout()" fill="clear">
+          <ion-icon name="log-out"></ion-icon>
+        </ion-button>
+      </a>
+
+    </ion-item>
   </ion-toolbar>
 </ion-header>
